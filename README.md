@@ -1,45 +1,112 @@
-# medical
+# 🏥 Medical NFT – Prescription as a Token
 
-This starter full stack project has been generated using AlgoKit. See below for default getting started instructions.
+**Medical NFT** is a decentralized application that enables doctors to mint verifiable prescriptions as NFTs (Non-Fungible Tokens) on the **Algorand blockchain**. By leveraging smart contracts written in **PyTeal** and a frontend built with **React.js + algosdk**, the platform ensures **secure**, **tamper-proof**, and **traceable** delivery of medical prescriptions.
 
-## Setup
+---
 
-### Initial setup
-1. Clone this repository to your local machine.
-2. Ensure [Docker](https://www.docker.com/) is installed and operational. Then, install `AlgoKit` following this [guide](https://github.com/algorandfoundation/algokit-cli#install).
-3. Run `algokit project bootstrap all` in the project directory. This command sets up your environment by installing necessary dependencies, setting up a Python virtual environment, and preparing your `.env` file.
-4. In the case of a smart contract project, execute `algokit generate env-file -a target_network localnet` from the `medical-contracts` directory to create a `.env.localnet` file with default configuration for `localnet`.
-5. To build your project, execute `algokit project run build`. This compiles your project and prepares it for running.
-6. For project-specific instructions, refer to the READMEs of the child projects:
-   - Smart Contracts: [medical-contracts](projects/medical-contracts/README.md)
-   - Frontend Application: [medical-frontend](projects/medical-frontend/README.md)
+## 🚀 Features
 
-> This project is structured as a monorepo, refer to the [documentation](https://github.com/algorandfoundation/algokit-cli/blob/main/docs/features/project/run.md) to learn more about custom command orchestration via `algokit project run`.
+### ✅ Doctor-Verified NFT Minting
+- Each prescription is minted as an **Algorand Standard Asset (ASA)**.
+- Metadata includes:
+  - Asset name, title, and description
+  - PDF link of the signed prescription
+  - Patient’s wallet address
+- NFT has a **total supply of 1** and **zero decimals** (indivisible)
 
-### Subsequently
+### ✅ Secure IPFS Storage
+- Prescriptions are uploaded to **IPFS** (e.g., via **Pinata**)
+- IPFS hash is embedded in the **ASA metadata**
 
-1. If you update to the latest source code and there are new dependencies, you will need to run `algokit project bootstrap all` again.
-2. Follow step 3 above.
+### ✅ NFT Transfer to Patient
+- Automatically transferred to the patient’s wallet after minting
 
-## Tools
+### ✅ Immutable Medical Records
+- On-chain, tamper-proof prescription history
+- **Doctor identity verification** supported
 
-This project makes use of Python and React to build Algorand smart contracts and to provide a base project configuration to develop frontends for your Algorand dApps and interactions with smart contracts. The following tools are in use:
+### ✅ ARC3 Compliant
+- Compatible with major **Algorand wallets** for seamless access and sharing
 
-- Algorand, AlgoKit, and AlgoKit Utils
-- Python dependencies including Poetry, Black, Ruff or Flake8, mypy, pytest, and pip-audit
-- React and related dependencies including AlgoKit Utils, Tailwind CSS, daisyUI, use-wallet, npm, jest, playwright, Prettier, ESLint, and Github Actions workflows for build validation
+---
 
-### VS Code
+## 🔗 Workflow
 
-It has also been configured to have a productive dev experience out of the box in [VS Code](https://code.visualstudio.com/), see the [backend .vscode](./backend/.vscode) and [frontend .vscode](./frontend/.vscode) folders for more details.
+1. **Doctor Login** – Connect via wallet or organization credentials  
+2. **Prescription Upload** – Enter title, description, upload signed PDF, and provide patient wallet address  
+3. **NFT Minting** – Upload PDF to IPFS → Embed metadata → Mint NFT on Algorand  
+4. **NFT Transfer** – Prescription NFT is automatically sent to the patient’s wallet  
+5. **Patient Access** – Patients can view, download, and share prescriptions directly from their wallet  
 
-## Integrating with smart contracts and application clients
+---
 
-Refer to the [medical-contracts](projects/medical-contracts/README.md) folder for overview of working with smart contracts, [projects/medical-frontend](projects/medical-frontend/README.md) for overview of the React project and the [projects/medical-frontend/contracts](projects/medical-frontend/src/contracts/README.md) folder for README on adding new smart contracts from backend as application clients on your frontend. The templates provided in these folders will help you get started.
-When you compile and generate smart contract artifacts, your frontend component will automatically generate typescript application clients from smart contract artifacts and move them to `frontend/src/contracts` folder, see [`generate:app-clients` in package.json](projects/medical-frontend/package.json). Afterwards, you are free to import and use them in your frontend application.
+## 💻 Technologies Used
 
-The frontend starter also provides an example of interactions with your MedicalClient in [`AppCalls.tsx`](projects/medical-frontend/src/components/AppCalls.tsx) component by default.
+| Layer           | Technology                          |
+|----------------|-------------------------------------|
+| Blockchain      | Algorand                            |
+| Smart Contract  | PyTeal                              |
+| ABI Interface   | ARC3                                |
+| NFT Minting     | algosdk                             |
+| Wallets         | Pera, Defly, Exodus, Daffi Wallets  |
+| File Storage    | IPFS / Pinata                       |
+| Frontend        | React.js + algosdk                  |
+| Security        | Wallet Authentication               |
 
-## Next Steps
+---
 
-You can take this project and customize it to build your own decentralized applications on Algorand. Make sure to understand how to use AlgoKit and how to write smart contracts for Algorand before you start.
+## 📂 Project Structure
+
+/medicalnft-contracts
+└── medinft/
+    └── contract.py # Smart contract in PyTeal
+
+/medicalnft-frontend
+└── src/
+    └── pages/
+          └── MarketplacePage.tsx
+          └── MedicalservicesPage.tsx
+└── Home.tsx
+└── App.tsx # Main UI for doctors and patients
+
+---
+
+## 🧠 Smart Contract Functions
+
+| Function                       | Description                                        |
+|-------------------------------|----------------------------------------------------|
+| `create_prescription()`       | Mint a prescription NFT and send it to patient     |
+| `delete_prescription()`       | Allow deletion of invalid/expired records (if any) |
+
+---
+
+## 🛠 Prerequisites
+
+- Python + PyTeal for smart contract development
+- Node.js + algosdk for frontend development
+- Testnet ALGO (from [Algorand Faucet](https://bank.testnet.algorand.network/))
+- Wallet setup (Pera Wallet, Defly Wallet, etc.)
+- IPFS setup (Pinata, Web3.Storage)
+
+---
+
+## 📦 Installation & Setup
+
+# Clone the repository
+git clone https://github.com/rushikesh2k04/Hackseries-medicalNFT.git
+cd Hackseries-medicalNFT
+## 📊 Future Enhancements
+Doctor dashboard with prescription history
+
+Patient dashboard with NFT viewer and access logs
+
+Expiry or revocation mechanism for prescriptions
+
+Integration with pharmacy APIs for direct order placement
+
+## ✨ Author
+Rushikesh – Blockchain Developer & Full Stack Engineer
+📧 Email: rushikesh9.2004@gmail.com
+
+## 💡 Inspiration
+Medical NFT leverages blockchain’s transparency and immutability to redefine how prescriptions are issued and managed. It ensures that patients receive secure, verifiable medical records, while giving doctors a modern, tamper-proof platform for digital prescription management.
