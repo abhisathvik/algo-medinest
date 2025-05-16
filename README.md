@@ -89,12 +89,6 @@
 - IPFS setup (Pinata, Web3.Storage)
 
 ---
-
-## 📦 Installation & Setup
-
-# Clone the repository
-git clone https://github.com/rushikesh2k04/Hackseries-medicalNFT.git
-cd Hackseries-medicalNFT
 ## 📊 Future Enhancements
 Doctor dashboard with prescription history
 
@@ -103,10 +97,6 @@ Patient dashboard with NFT viewer and access logs
 Expiry or revocation mechanism for prescriptions
 
 Integration with pharmacy APIs for direct order placement
-
-## ✨ Author
-Rushikesh – Blockchain Developer & Full Stack Engineer
-📧 Email: rushikesh9.2004@gmail.com
 
 ## 💡 Inspiration
 Medical NFT leverages blockchain’s transparency and immutability to redefine how prescriptions are issued and managed. It ensures that patients receive secure, verifiable medical records, while giving doctors a modern, tamper-proof platform for digital prescription management.
